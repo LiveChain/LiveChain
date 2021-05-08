@@ -1,4 +1,4 @@
-### Hi there 👋
+### Light weight blockchain project best suited for IOT devices ⚡
 
 <!--
 **LiveChain/LiveChain** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
