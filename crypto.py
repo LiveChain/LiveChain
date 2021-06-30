@@ -66,6 +66,25 @@ class crypto:
             scaler >>= 1
             index += 1
         return _X, _Y
+    
+    # fast EC scaler multiplication 4x faster than previous method
+    # this can be improved more by catching precalculating group by few bits.
+    def ECmult_fast(scaler):
+        if scaler==0:
+            return 0,0
+        if(scaler==1):
+            return Gx
+        scaler-=1
+        _2px=Gx
+        _2py=Gy
+        _x=Gx
+        _y=Gy
+        while(scaler):
+            if scaler&1:
+                _x,_y=ECadd(_x,_y,_2px,_2py)
+            scaler>>=1
+            _2px,_2py=ECdouble(_2px,_2py)
+        return _x,_y  
 
     ##2. scaler multiplication with other point on secp256k1 curve
     ###Example 2*(4G)=8G 4*(5G)=20G etc.
